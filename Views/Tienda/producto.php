@@ -59,12 +59,17 @@
 					
 				<div class="col-md-6 col-lg-5 p-b-30">
 					<div class="p-r-50 p-t-5 p-lr-0-lg">
-						<h4 class="mtext-105 cl2 js-name-detail p-b-14">
+						<h2 class="mtext-103 cl2 js-name-detail p-b-14">
 							<?= $arrProducto['PRO_NOMBRE']; ?>
-						</h4>
-						<span class="mtext-106 cl2">
-							<?= SMONEY.formatMoney($arrProducto['PRO_PRECIO']); ?>
+						</h2>
+						<span class="mtext-104 cl2">
+						Precio:	<?= SMONEY.formatMoney($arrProducto['PRO_PRECIO']); ?>
 						</span>
+						</br></br>
+						<span class="mtext-104 cl2">
+						Unidades de stock: <?= $arrProducto['PRO_STOCK']; ?>
+						</span>
+						
 						<!-- <p class="stext-102 cl3 p-t-23"> -->
 							<?= $arrProducto['PRO_DESCRIPCION']; ?>							
 						</p>						
