@@ -19,7 +19,7 @@
 				header("Location:".base_url().'/dashboard');
 			}
 			$data['page_tag']          = "Productos";
-			$data['page_title']        = "PRODUCTOS";
+			$data['page_title']        = "PRODUCTOS <small>Tienda Virtual</small>";
 			$data['page_name']         = "productos";
 			$data['page_functions_js'] = "functions_productos.js";
 			$this->views->getView($this,"productos",$data);
@@ -75,29 +75,34 @@
 					$intStatus        = intval($_POST['listStatus']);
 					$request_producto = "";
 
+					$ruta = strtolower(clear_cadena($strNombre));
+					$ruta = str_replace(" ","-",$ruta);
+
 					if($idProducto == 0)
 					{
 						$option = 1;
 						if($_SESSION['permisosMod']['PRM_W']){
 							$request_producto = $this->model->insertProducto($strNombre, 
-																			 $strDescripcion, 
-																			 $strCodigo, 
-																			 $intCategoriaId,
-																			 $strPrecio, 
-																			 $intStock, 
-																			 $intStatus);
+							$strDescripcion, 
+							$strCodigo, 
+							$intCategoriaId,
+							$strPrecio, 
+							$intStock, 
+							$ruta,
+							$intStatus);
 						}
 					}else{
 						$option = 2;
 						if($_SESSION['permisosMod']['PRM_U']){
 							$request_producto = $this->model->updateProducto($idProducto,
-																		     $strNombre,
-																		     $strDescripcion, 
-																		     $strCodigo, 
-																		     $intCategoriaId,
-																		     $strPrecio, 
-																		     $intStock, 
-																		     $intStatus);
+							$strNombre,
+							$strDescripcion, 
+							$strCodigo, 
+							$intCategoriaId,
+							$strPrecio, 
+							$intStock, 
+							$ruta,
+							$intStatus);
 						}
 					}
 					if($request_producto > 0 )

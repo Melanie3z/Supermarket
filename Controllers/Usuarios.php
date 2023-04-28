@@ -20,7 +20,7 @@
 				header("Location:".base_url().'/dashboard');
 			}
 			$data['page_tag']          = "Usuarios";
-			$data['page_title']        = "USUARIOS";
+			$data['page_title']        = "USUARIOS <small>Tienda Virtual</small>";
 			$data['page_name']         = "usuarios";
 			$data['page_functions_js'] = "functions_usuarios.js";
 			$this->views->getView($this,"usuarios",$data);
@@ -47,27 +47,27 @@
 						$strPassword =  empty($_POST['txtPassword']) ? hash("SHA256",passGenerator()) : hash("SHA256",$_POST['txtPassword']);
 						if($_SESSION['permisosMod']['PRM_W']){
 							$request_user = $this->model->insertUsuario($strIdentificacion,
-								$strNombre, 
-								$strApellido, 
-								$intTelefono, 
-								$strEmail,
-								$strPassword, 
-								$intTipoId, 
-								$intStatus );
+																		$strNombre, 
+																		$strApellido, 
+																		$intTelefono, 
+																		$strEmail,
+																		$strPassword, 
+																		$intTipoId, 
+																		$intStatus );
 						}
 					}else{
 						$option = 2;
 						$strPassword =  empty($_POST['txtPassword']) ? "" : hash("SHA256",$_POST['txtPassword']);
 						if($_SESSION['permisosMod']['PRM_U']){
 							$request_user = $this->model->updateUsuario($idUsuario,
-								$strIdentificacion, 
-								$strNombre,
-								$strApellido, 
-								$intTelefono, 
-								$strEmail,
-								$strPassword, 
-								$intTipoId, 
-								$intStatus);
+																		$strIdentificacion, 
+																		$strNombre,
+																		$strApellido, 
+																		$intTelefono, 
+																		$strEmail,
+																		$strPassword, 
+																		$intTipoId, 
+																		$intStatus);
 						}
 					}
 
@@ -194,11 +194,11 @@
 						$strPassword = hash("SHA256",$_POST['txtPassword']);
 					}
 					$request_user = $this->model->updatePerfil($idUsuario,
-						$strIdentificacion, 
-						$strNombre,
-						$strApellido, 
-						$intTelefono, 
-						$strPassword);
+															   $strIdentificacion, 
+															   $strNombre,
+															   $strApellido, 
+															   $intTelefono, 
+															   $strPassword);
 					if($request_user)
 					{
 						sessionUser($_SESSION['idUser']);

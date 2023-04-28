@@ -28,16 +28,16 @@ window.addEventListener('load', function() {
             {"data":"options"}
         ],
         "columnDefs": [
-            { 'className': "textcenter", "targets": [ 3 ] },
-            { 'className': "textright", "targets": [ 4 ] },
-            { 'className': "textcenter", "targets": [ 5 ] }
-        ],       
+                        { 'className': "textcenter", "targets": [ 3 ] },
+                        { 'className': "textright", "targets": [ 4 ] },
+                        { 'className': "textcenter", "targets": [ 5 ] }
+                      ],       
         'dom': 'lBfrtip',
         'buttons': [
             {
                 "extend": "excelHtml5",
                 "text": "<i class='fas fa-file-excel'></i> Excel",
-                "titleAttr":"Esportar a Excel",
+                "titleAttr":"Exportar a Excel",
                 "className": "btn btn-success",
                 "exportOptions": { 
                     "columns": [ 0, 1, 2, 3, 4, 5] 
@@ -45,7 +45,7 @@ window.addEventListener('load', function() {
             },{
                 "extend": "pdfHtml5",
                 "text": "<i class='fas fa-file-pdf'></i> PDF",
-                "titleAttr":"Esportar a PDF",
+                "titleAttr":"Exportar a PDF",
                 "className": "btn btn-danger",
                 "exportOptions": { 
                     "columns": [ 0, 1, 2, 3, 4, 5] 
@@ -322,8 +322,7 @@ function fntEditInfo(element,idProducto){
                 }
                 document.querySelector("#containerImages").innerHTML = htmlImage; 
                 document.querySelector("#divBarCode").classList.remove("notblock");
-                document.querySelector("#containerGallery").classList.remove("notblock");           
-
+                document.querySelector("#containerGallery").classList.remove("notblock");
                 $('#modalFormProductos').modal('show');
             }else{
                 swal("Error", objData.msg , "error");

@@ -18,7 +18,7 @@
 				header("Location:".base_url().'/dashboard');
 			}
 			$data['page_tag']          = "Categorias";
-			$data['page_title']        = "CATEGORIAS";
+			$data['page_title']        = "CATEGORIAS <small>Tienda OK</small>";
 			$data['page_name']         = "categorias";
 			$data['page_functions_js'] = "functions_categorias.js";
 			$this->views->getView($this,"categorias",$data);
@@ -36,6 +36,9 @@
 					$strDescipcion  = strClean($_POST['txtDescripcion']);
 					$intStatus      = intval($_POST['listStatus']);
 
+					$strRuta = strtolower(clear_cadena($strCategoria));
+					$strRuta = str_replace(" ","-",$strRuta);					
+
 					$foto   	 	 = $_FILES['foto'];
 					$nombre_foto 	 = $foto['name'];
 					$type 		 	 = $foto['type'];
@@ -50,7 +53,7 @@
 					{
 						//Crear
 						if($_SESSION['permisosMod']['PRM_W']){
-							$request_cateria = $this->model->inserCategoria($strCategoria, $strDescipcion,$imgPortada,$intStatus);
+							$request_cateria = $this->model->inserCategoria($strCategoria, $strDescipcion,$imgPortada,$strRuta, $intStatus);
 							$option = 1;
 						}
 					}else{
@@ -61,7 +64,7 @@
 									$imgPortada = $_POST['foto_actual'];
 								}
 							}
-							$request_cateria = $this->model->updateCategoria($intIdcategoria,$strCategoria, $strDescipcion,$imgPortada,$intStatus);
+							$request_cateria = $this->model->updateCategoria($intIdcategoria,$strCategoria, $strDescipcion,$imgPortada,$strRuta,$intStatus);
 							$option = 2;
 						}
 					}

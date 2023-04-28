@@ -31,7 +31,7 @@ DROP TABLE IF EXISTS PERSONA;
 CREATE TABLE IF NOT EXISTS PERSONA
 (
    PER_ID               bigint(20)                              NOT NULL AUTO_INCREMENT,
-   PER_IDENTIFICACION   varchar(30)  COLLATE utf8mb4_swedish_ci NOT NULL,
+   PER_IDENTIFICACION   varchar(30)  COLLATE utf8mb4_swedish_ci NULL,
    PER_NOMBRE           varchar(100) COLLATE utf8mb4_swedish_ci NOT NULL,
    PER_APELLIDOS        varchar(100) COLLATE utf8mb4_swedish_ci NOT NULL,
    PER_TELEFONO         bigint(20)                              NOT NULL,
@@ -86,11 +86,12 @@ DROP TABLE IF EXISTS CATEGORIA;
 CREATE TABLE IF NOT EXISTS CATEGORIA
 (
    CAT_ID          bigint(20)                              NOT NULL AUTO_INCREMENT,
-   CAT_NOMBRE      varchar(100) COLLATE utf8mb4_swedish_ci NOT NULL,
+   CAT_NOMBRE      varchar(255) COLLATE utf8mb4_swedish_ci NOT NULL,
    CAT_DESCRIPCION text         COLLATE utf8mb4_swedish_ci NOT NULL,
    CAT_DATECREATED datetime                                NOT NULL DEFAULT CURRENT_TIMESTAMP,
    CAT_STATUS      int(11)                                 NOT NULL DEFAULT '1',
-   CAT_PORTADA     varchar(200) COLLATE utf8mb4_swedish_ci NOT NULL
+   CAT_PORTADA     varchar(200) COLLATE utf8mb4_swedish_ci NOT NULL,
+   CAT_RUTA        varchar(255) COLLATE utf8mb4_swedish_ci NOT NULL,
   PRIMARY KEY (CAT_ID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
@@ -100,13 +101,14 @@ CREATE TABLE IF NOT EXISTS PRODUCTO
    PRO_ID          bigint(20)                               NOT NULL AUTO_INCREMENT,
    PRO_CAT_ID      bigint(20)                               NOT NULL,
    PRO_CODIGO      varchar(30)   COLLATE utf8mb4_swedish_ci NOT NULL,
-   PRO_NOMBRE      varchar(100)  COLLATE utf8mb4_swedish_ci NOT NULL,
+   PRO_NOMBRE      varchar(255)  COLLATE utf8mb4_swedish_ci NOT NULL,
    PRO_DESCRIPCION text          COLLATE utf8mb4_swedish_ci NOT NULL,
    PRO_PRECIO      decimal(11,2)                            NOT NULL,
    PRO_STOCK       int(11)                                  NOT NULL,
    PRO_IMAGEN      varchar(100)  COLLATE utf8mb4_swedish_ci NULL,
    PRO_DATECREATED datetime                                 NOT NULL DEFAULT CURRENT_TIMESTAMP,
    PRO_STATUS      int(11)                                  NOT NULL DEFAULT '1',
+   PRO_RUTA        varchar(255)  COLLATE utf8mb4_swedish_ci NULL,
    PRIMARY KEY (PRO_ID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
@@ -131,6 +133,15 @@ ALTER TABLE PRODUCTO
    ADD CONSTRAINT FK_PRO_CAT FOREIGN KEY (PRO_CAT_ID)
       REFERENCES CATEGORIA (CAT_ID) ON DELETE CASCADE ON UPDATE CASCADE;
 
+DROP TABLE IF EXISTS TIPO_PAGO;
+CREATE TABLE IF NOT EXISTS TIPO_PAGO
+(
+   TPA_ID        bigint(20)                        NOT NULL AUTO_INCREMENT,
+   TPA_TIPO_PAGO varchar(100)                      NOT NULL,
+   TPA_STATUS    int(11)                           NOT NULL,
+  PRIMARY KEY (TPA_ID)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;      
+
 DROP TABLE IF EXISTS PEDIDO;
 CREATE TABLE IF NOT EXISTS PEDIDO
 (
@@ -138,7 +149,7 @@ CREATE TABLE IF NOT EXISTS PEDIDO
    PED_PER_ID    bigint(20)    NOT NULL,
    PED_FECHA     datetime      NOT NULL DEFAULT CURRENT_TIMESTAMP,
    PED_MONTO     decimal(11,2) NOT NULL,
-   PED_TIPO_PAGO bigint(20)    NOT NULL,
+   PED_TPA_ID    bigint(20)    NOT NULL,
    PED_STATUS    int(11)       NOT NULL DEFAULT '1',
    PRIMARY KEY (PED_ID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
@@ -146,6 +157,10 @@ CREATE TABLE IF NOT EXISTS PEDIDO
 ALTER TABLE PEDIDO
    ADD CONSTRAINT FK_PED_PER FOREIGN KEY (PED_PER_ID)
       REFERENCES PERSONA (PER_ID) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE PEDIDO
+   ADD CONSTRAINT FK_PED_TPA FOREIGN KEY (PED_TPA_ID)
+      REFERENCES TIPO_PAGO(TPA_ID) ON DELETE CASCADE ON UPDATE CASCADE;
 
 DROP TABLE IF EXISTS DETALLE_PEDIDO;
 CREATE TABLE IF NOT EXISTS DETALLE_PEDIDO
@@ -169,15 +184,21 @@ ALTER TABLE DETALLE_PEDIDO
 DROP TABLE IF EXISTS DETALLE_TEMP;
 CREATE TABLE IF NOT EXISTS DETALLE_TEMP
 (
-   DTE_ID       bigint(20)                              NOT NULL AUTO_INCREMENT,
-   DTE_PRO_ID   bigint(20)                              NOT NULL,
-   DTE_PRECIO   decimal(11,2)                           NOT NULL,
-   DTE_CANTIDAD int(11)                                 NOT NULL,
-   DTE_TOKEN    varchar(100) COLLATE utf8mb4_swedish_ci NOT NULL,
+   DTE_ID                bigint(20)                              NOT NULL AUTO_INCREMENT,
+   DTE_PER_ID            bigint(20)                              NOT NULL,
+   DTE_PRO_ID            bigint(20)                              NOT NULL,
+   DTE_PRECIO            decimal(11,2)                           NOT NULL,
+   DTE_CANTIDAD          int(11)                                 NOT NULL,
+   DTE_TRANSACCION_ID    varchar(255) COLLATE utf8mb4_swedish_ci NOT NULL,
   PRIMARY KEY (DTE_ID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_swedish_ci;
 
 ALTER TABLE DETALLE_TEMP
    ADD CONSTRAINT FK_DTE_PRO FOREIGN KEY (DTE_PRO_ID)
       REFERENCES PRODUCTO (PRO_ID) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE DETALLE_TEMP
+   ADD CONSTRAINT FK_DTE_PER FOREIGN KEY (DTE_PER_ID)
+      REFERENCES PERSONA (PER_ID) ON DELETE CASCADE ON UPDATE CASCADE;
+
 

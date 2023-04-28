@@ -6,6 +6,7 @@
 		public $strCategoria;
 		public $strDescripcion;
 		public $intStatus;
+		public $strRuta;
 		public $strPortada;
 
 		public function __construct()
@@ -13,11 +14,12 @@
 			parent::__construct();
 		}
 
-		public function inserCategoria(string $nombre, string $descripcion, string $portada, int $status){
+		public function inserCategoria(string $nombre, string $descripcion, string $portada, string $ruta, int $status){
 			$return               = 0;
 			$this->strCategoria   = $nombre;
 			$this->strDescripcion = $descripcion;
 			$this->strPortada     = $portada;
+			$this->strRuta        = $ruta;
 			$this->intStatus      = $status;
 
 			$sql = "SELECT * 
@@ -29,11 +31,13 @@
 				$query_insert  = "INSERT INTO CATEGORIA(CAT_NOMBRE,
 					                                    CAT_DESCRIPCION,
 					                                    CAT_PORTADA,
+					                                    CAT_RUTA,
 					                                    CAT_STATUS) 
-				                                 VALUES(?,?,?,?)";
+				                                 VALUES(?,?,?,?,?)";
 		       	$arrData = array($this->strCategoria, 
 								 $this->strDescripcion, 
 								 $this->strPortada, 
+								 $this->strRuta, 
 								 $this->intStatus);
 		       	$request_insert = $this->insert($query_insert,$arrData);
 		       	$return = $request_insert;
@@ -61,11 +65,12 @@
 			return $request;
 		}
 
-		public function updateCategoria(int $idcategoria, string $categoria, string $descripcion, string $portada, int $status){
+		public function updateCategoria(int $idcategoria, string $categoria, string $descripcion, string $portada, string $ruta, int $status){
 			$this->intIdcategoria = $idcategoria;
 			$this->strCategoria   = $categoria;
 			$this->strDescripcion = $descripcion;
 			$this->strPortada     = $portada;
+			$this->strRuta        = $ruta;
 			$this->intStatus      = $status;
 
 			$sql = "SELECT * 
@@ -80,11 +85,13 @@
 				           SET CAT_NOMBRE      = ?, 
 				               CAT_DESCRIPCION = ?, 
 				               CAT_PORTADA     = ?, 
+				               CAT_RUTA        = ?, 
 				               CAT_STATUS      = ? 
 				         WHERE CAT_ID = $this->intIdcategoria ";
 				$arrData = array($this->strCategoria, 
 								 $this->strDescripcion, 
 								 $this->strPortada, 
+								 $this->strRuta, 
 								 $this->intStatus);
 				$request = $this->update($sql,$arrData);
 			}else{

@@ -26,12 +26,12 @@ document.addEventListener('DOMContentLoaded', function(){
             {
                 "extend": "excelHtml5",
                 "text": "<i class='fas fa-file-excel'></i> Excel",
-                "titleAttr":"Esportar a Excel",
+                "titleAttr":"Exportar a Excel",
                 "className": "btn btn-success"
             },{
                 "extend": "pdfHtml5",
                 "text": "<i class='fas fa-file-pdf'></i> PDF",
-                "titleAttr":"Esportar a PDF",
+                "titleAttr":"Exportar a PDF",
                 "className": "btn btn-danger"
             }
         ],
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
     if(document.querySelector("#formCliente")){
         let formCliente = document.querySelector("#formCliente");
-        formUsuario.onsubmit = function(e) {
+        formCliente.onsubmit = function(e) {
             e.preventDefault();
             let strIdentificacion = document.querySelector('#txtIdentificacion').value;
             let strNombre = document.querySelector('#txtNombre').value;

@@ -18,7 +18,7 @@
 				header("Location:".base_url().'/dashboard');
 			}
 			$data['page_tag']          = "Clientes";
-			$data['page_title']        = "CLIENTES";
+			$data['page_title']        = "CLIENTES <small>Tienda Virtual</small>";
 			$data['page_name']         = "clientes";
 			$data['page_functions_js'] = "functions_clientes.js";
 			$this->views->getView($this,"clientes",$data);

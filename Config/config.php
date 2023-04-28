@@ -24,6 +24,14 @@
 	//Datos envio de correo
 	const NOMBRE_REMITENTE = "TiendaOK";
 	const EMAIL_REMITENTE  = "no-reply@fastech.co";
-	const NOMBRE_EMPESA    = "TiendaOK";
+	const NOMBRE_EMPRESA   = "TiendaOK";
 	const WEB_EMPRESA      = "www.tiendaok.co";	
+
+	const CAT_SLIDER       = "1,2,3";
+	const CAT_BANNER       = "4,5,6";
+	const KEY              = "Colombia123.";
+	const METHODENCRYPT    = "AES-128-ECB";
+
+	const COSTOENVIO       = 10;
+	
 ?>
