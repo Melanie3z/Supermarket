@@ -99,14 +99,6 @@
               <li>
                 <a href="<?= base_url(); ?>/carrito">Carrito</a>
               </li>
-
-              <li>
-                <a href="<?= base_url(); ?>/nosotros">Nosotros</a>
-              </li>
-
-              <li>
-                <a href="<?= base_url(); ?>/contacto">Contacto</a>
-              </li>
             </ul>
           </div>  
 
@@ -191,14 +183,6 @@
 
         <li>
           <a href="<?= base_url(); ?>/carrito">Carrito</a>
-        </li>
-
-        <li>
-          <a href="<?= base_url(); ?>/nosotros">Nosotros</a>
-        </li>
-
-        <li>
-          <a href="<?= base_url(); ?>/contacto">Contacto</a>
         </li>
       </ul>
     </div>
