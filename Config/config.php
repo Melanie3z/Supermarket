@@ -22,9 +22,9 @@
 	const SMONEY = "$";	
 
 	//Datos envio de correo
-	const NOMBRE_REMITENTE = "TiendaOK";
+	const NOMBRE_REMITENTE = "PoliMarket";
 	const EMAIL_REMITENTE  = "no-reply@fastech.co";
-	const NOMBRE_EMPRESA   = "TiendaOK";
+	const NOMBRE_EMPRESA   = "PoliMarket";
 	const WEB_EMPRESA      = "www.tiendaok.co";	
 
 	const CAT_SLIDER       = "1,2,3";
