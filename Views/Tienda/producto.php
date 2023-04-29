@@ -69,7 +69,12 @@
 						<span class="mtext-104 cl2">
 						Unidades de stock: <?= $arrProducto['PRO_STOCK']; ?>
 						</span>
-						
+						</br>
+						</br>
+						<span class="mtext-104 cl2" style="color:#fe9781">
+						<?= $arrProducto['PRO_PROMOCION'] == 1 ? "El producto esta en promoción" : ""?>
+						</span>
+						</br>
 						<p class="stext-102 cl3 p-t-23">
 							<?= $arrProducto['PRO_DESCRIPCION']; ?>							
 						</p>						
