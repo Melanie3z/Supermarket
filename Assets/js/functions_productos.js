@@ -24,6 +24,7 @@ window.addEventListener('load', function() {
             {"data":"PRO_NOMBRE"},
             {"data":"PRO_STOCK"},
             {"data":"PRO_PRECIO"},
+            {"data":"PRO_PROMOCION"},
             {"data":"PRO_STATUS"},
             {"data":"options"}
         ],
@@ -67,6 +68,7 @@ window.addEventListener('load', function() {
             let strPrecio = document.querySelector('#txtPrecio').value;
             let intStock = document.querySelector('#txtStock').value;
             let intStatus = document.querySelector('#listStatus').value;
+            let intPromocion = document.querySelector('#txtPromocion').value;
             if(strNombre == '' || intCodigo == '' || strPrecio == '' || intStock == '' )
             {
                 swal("Atención", "Todos los campos son obligatorios." , "error");
@@ -104,7 +106,8 @@ window.addEventListener('load', function() {
                             rowTable.cells[2].textContent = strNombre;
                             rowTable.cells[3].textContent = intStock;
                             rowTable.cells[4].textContent = smony+strPrecio;
-                            rowTable.cells[5].innerHTML   = htmlStatus;
+                            rowTable.cells[5].textContent = intPromocion;
+                            rowTable.cells[6].innerHTML   = htmlStatus;
                             rowTable = ""; 
                         }
                     }else{
@@ -256,6 +259,7 @@ function fntViewInfo(idProducto){
                 document.querySelector("#celNombre").innerHTML      = objProducto.PRO_NOMBRE;
                 document.querySelector("#celPrecio").innerHTML      = objProducto.PRO_PRECIO;
                 document.querySelector("#celStock").innerHTML       = objProducto.PRO_STOCK;
+                document.querySelector("#celPromocion").innerHTML   = objProducto.PRO_PROMOCION;
                 document.querySelector("#celCategoria").innerHTML   = objProducto.CAT_NOMBRE;
                 document.querySelector("#celStatus").innerHTML      = estadoProducto;
                 document.querySelector("#celDescripcion").innerHTML = objProducto.PRO_DESCRIPCION;
@@ -297,6 +301,7 @@ function fntEditInfo(element,idProducto){
                 document.querySelector("#txtNombre").value      = objProducto.PRO_NOMBRE;
                 document.querySelector("#txtDescripcion").value = objProducto.PRO_DESCRIPCION;
                 document.querySelector("#txtCodigo").value      = objProducto.PRO_CODIGO;
+                document.querySelector("#txtPromocion").value   = objProducto.PRO_PROMOCION;
                 document.querySelector("#txtPrecio").value      = objProducto.PRO_PRECIO;
                 document.querySelector("#txtStock").value       = objProducto.PRO_STOCK;
                 document.querySelector("#listCategoria").value  = objProducto.PRO_CAT_ID;

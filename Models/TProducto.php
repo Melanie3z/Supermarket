@@ -20,6 +20,7 @@
 						   CAT_NOMBRE,						   
 						   PRO_PRECIO,
 						   PRO_STOCK,
+						   PRO_PROMOCION,
 						   PRO_RUTA
 					  FROM PRODUCTO
 					       INNER JOIN CATEGORIA ON PRO_CAT_ID = CAT_ID
@@ -64,6 +65,7 @@
 				               CAT_NOMBRE,
 				               PRO_PRECIO,
 				               PRO_STOCK,
+							   PRO_PROMOCION,
 				               PRO_RUTA
 						  FROM PRODUCTO
 						       INNER JOIN CATEGORIA ON PRO_CAT_ID = CAT_ID
@@ -106,6 +108,7 @@
 			               CAT_RUTA,
 			               PRO_PRECIO,
 			               PRO_STOCK,
+						   PRO_PROMOCION,
 			               PRO_RUTA
 					  FROM PRODUCTO
 					       INNER JOIN CATEGORIA ON PRO_CAT_ID = CAT_ID
@@ -153,6 +156,7 @@
 			               CAT_NOMBRE,
 			               PRO_PRECIO,
 			               PRO_STOCK,
+						   PRO_PROMOCION,
 			               PRO_RUTA
 					  FROM PRODUCTO
 					       INNER JOIN CATEGORIA ON PRO_CAT_ID = CAT_ID
@@ -190,7 +194,8 @@
 			               CAT_NOMBRE,
 			               PRO_PRECIO,
 			               PRO_RUTA,
-			               PRO_STOCK
+			               PRO_STOCK,
+						   PRO_PROMOCION
 					  FROM PRODUCTO
 					       INNER JOIN CATEGORIA ON PRO_CAT_ID = CAT_ID
 					 WHERE PRO_STATUS != 0 

@@ -49,16 +49,23 @@
 
                     <div class="row">
                         <div class="form-group col-md-6">
+                            <label class="control-label">Promoción</label>
+                            <input class="form-control" id="txtPromocion" name="txtPromocion" type="text" required="" value="0">
+                        </div>
+                        <div class="form-group col-md-6">
                             <label for="listCategoria">Categoría <span class="required">*</span></label>
                             <select class="form-control" data-live-search="true" id="listCategoria" name="listCategoria" required=""></select>
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="listStatus">Estado <span class="required">*</span></label>
-                            <select class="form-control selectpicker" id="listStatus" name="listStatus" required="">
-                              <option value="1">Activo</option>
-                              <option value="2">Inactivo</option>
-                            </select>
-                        </div>
+                    </div>
+                    
+                    <div class="row">
+                      <div class="form-group col-md-12">
+                          <label for="listStatus">Estado <span class="required">*</span></label>
+                          <select class="form-control selectpicker" id="listStatus" name="listStatus" required="">
+                            <option value="1">Activo</option>
+                            <option value="2">Inactivo</option>
+                          </select>
+                      </div>
                     </div>
 
                     <div class="row">
@@ -136,6 +143,10 @@
             <tr>
               <td>Stock:</td>
               <td id="celStock"></td>
+            </tr>
+            <tr>
+              <td>Promoción:</td>
+              <td id="celPromocion"></td>
             </tr>
             <tr>
               <td>Categoría:</td>

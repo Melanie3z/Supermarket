@@ -72,6 +72,7 @@
 					$intCategoriaId   = intval($_POST['listCategoria']);
 					$strPrecio        = strClean($_POST['txtPrecio']);
 					$intStock         = intval($_POST['txtStock']);
+					$intPromocion     = intval($_POST['txtPromocion']);
 					$intStatus        = intval($_POST['listStatus']);
 					$request_producto = "";
 
@@ -88,6 +89,7 @@
 							$intCategoriaId,
 							$strPrecio, 
 							$intStock, 
+							$intPromocion,
 							$ruta,
 							$intStatus);
 						}
@@ -101,6 +103,7 @@
 							$intCategoriaId,
 							$strPrecio, 
 							$intStock, 
+							$intPromocion,
 							$ruta,
 							$intStatus);
 						}
@@ -151,7 +154,7 @@
 			// dep($_FILES);
 			if($_POST){
 				if(empty($_POST['idproducto'])){
-					$arrResponse = array('status' => false, 'msg' => 'Error de dato, no ha guardado el producto.');
+					$arrResponse = array('status' => false, 'msg' => 'Error de datos, no ha guardado el producto.');
 				}else{
 					$idProducto = intval($_POST['idproducto']);
 					$foto      = $_FILES['foto'];
