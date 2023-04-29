@@ -82,7 +82,7 @@
           
           <!-- Logo desktop -->   
           <a href="<?= base_url(); ?>" class="logo">
-            <img src="<?= media()?>/tienda/images/icons/logo.png" alt="Tienda Virtual">
+            <img src="<?= media()?>/tienda/images/icons/logoPoli.png" alt="Tienda Virtual">
           </a>
 
           <!-- Menu desktop -->

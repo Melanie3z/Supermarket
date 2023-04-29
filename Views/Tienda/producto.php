@@ -65,12 +65,12 @@
 						<span class="mtext-104 cl2">
 						Precio:	<?= SMONEY.formatMoney($arrProducto['PRO_PRECIO']); ?>
 						</span>
-						</br></br>
+						</br>
 						<span class="mtext-104 cl2">
 						Unidades de stock: <?= $arrProducto['PRO_STOCK']; ?>
 						</span>
 						
-						<!-- <p class="stext-102 cl3 p-t-23"> -->
+						<p class="stext-102 cl3 p-t-23">
 							<?= $arrProducto['PRO_DESCRIPCION']; ?>							
 						</p>						
 						<!--  -->
