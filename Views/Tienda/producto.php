@@ -67,7 +67,7 @@
 						</span>
 						</br>
 						<span class="mtext-104 cl2">
-						Unidades de stock: <?= $arrProducto['PRO_STOCK']; ?>
+						Cantidad existente del producto: <?= $arrProducto['PRO_STOCK']; ?>
 						</span>
 						</br>
 						</br>
