@@ -13,8 +13,8 @@
 
 		public function login()
 		{
-			$data['page_tag']          = "Login - Tienda OK";
-			$data['page_title']        = "Login - Tienda OK";
+			$data['page_tag']          = "Login - PoliMarket";
+			$data['page_title']        = "Login - PoliMarket";
 			$data['page_name']         = "login";
 			$data['page_functions_js'] = "functions_login.js";
 			$this->views->getView($this,"login",$data);
